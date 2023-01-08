@@ -7,8 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class FireStation {
 
@@ -16,6 +14,6 @@ public class FireStation {
 
     private Integer station;
 
-    private List<Person> persons;
+    private List<Person> people;
 
 }

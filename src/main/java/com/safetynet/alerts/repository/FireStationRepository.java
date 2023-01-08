@@ -18,4 +18,11 @@ public class FireStationRepository extends AbstractRepository {
         return fireStations;
     }
 
+    public List<FireStation> findByStation(Integer station){
+        return fireStations
+                .stream()
+                .filter(fireStation -> fireStation.getStation().equals(station))
+                .toList();
+    }
+
 }

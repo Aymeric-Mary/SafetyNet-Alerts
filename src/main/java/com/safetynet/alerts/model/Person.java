@@ -1,7 +1,11 @@
 package com.safetynet.alerts.model;
 
+import com.safetynet.alerts.utils.Utils;
 import lombok.*;
-import lombok.Data;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -27,4 +31,18 @@ public class Person {
     private MedicalRecord medicalRecord;
 
     private FireStation fireStation;
+
+    public Integer getAge() {
+        LocalDate birthDate = LocalDate.parse(this.medicalRecord.getBirthdate(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        return Period.between(birthDate, Utils.getCurrentDate()).getYears();
+    }
+
+    public Boolean isAdult() {
+        return getAge() > 18;
+    }
+
+    public Boolean isChild() {
+        return getAge() <= 18;
+    }
+
 }

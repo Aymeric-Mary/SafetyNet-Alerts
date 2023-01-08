@@ -7,7 +7,7 @@ import java.util.List;
 @Getter
 public class Data {
 
-    private List<Person> persons;
+    private List<Person> people;
 
     private List<FireStation> firestations;
 

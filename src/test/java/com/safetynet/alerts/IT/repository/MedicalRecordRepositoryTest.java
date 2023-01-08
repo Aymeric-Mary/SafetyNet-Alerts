@@ -1,4 +1,4 @@
-package com.safetynet.alerts.UT.repository;
+package com.safetynet.alerts.IT.repository;
 
 import com.safetynet.alerts.model.MedicalRecord;
 import com.safetynet.alerts.repository.MedicalRecordRepository;

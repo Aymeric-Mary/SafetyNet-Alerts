@@ -25,7 +25,7 @@ public abstract class AbstractRepository {
             Path path = new ClassPathResource("data/data.json").getFile().toPath();
             String content = Files.readString(path);
             this.data = gson.fromJson(content, Data.class);
-            this.data.getPersons().forEach(this::mapPersonRelation);
+            this.data.getPeople().forEach(this::mapPersonRelation);
             this.data.getMedicalrecords().forEach(this::mapPersonToMedicalRecord);
             this.data.getFirestations().forEach(this::mapPersonToFireStation);
         } catch (IOException e) {
@@ -55,7 +55,7 @@ public abstract class AbstractRepository {
     }
 
     private void mapPersonToMedicalRecord(MedicalRecord medicalRecord) {
-        this.data.getPersons()
+        this.data.getPeople()
                 .stream()
                 .filter(person -> person.getMedicalRecord().equals(medicalRecord))
                 .findFirst()
@@ -63,11 +63,11 @@ public abstract class AbstractRepository {
     }
 
     private void mapPersonToFireStation(FireStation fireStation) {
-        List<Person> persons = this.data.getPersons()
+        List<Person> people = this.data.getPeople()
                 .stream()
                 .filter(person -> person.getFireStation().equals(fireStation))
                 .toList();
-        fireStation.setPersons(persons);
+        fireStation.setPeople(people);
     }
 
 }

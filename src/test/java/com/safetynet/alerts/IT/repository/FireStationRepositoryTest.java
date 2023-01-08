@@ -1,4 +1,4 @@
-package com.safetynet.alerts.UT.repository;
+package com.safetynet.alerts.IT.repository;
 
 import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.repository.FireStationRepository;
@@ -22,8 +22,25 @@ public class FireStationRepositoryTest {
         // Then
         assertThat(fireStations.size()).isEqualTo(13);
         assertThat(fireStations)
-                .flatExtracting("address", "station","persons")
+                .flatExtracting("address", "station", "people")
                 .doesNotContainNull();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1,3",
+            "2,3",
+            "3,5",
+            "4,2",
+            "5,0"
+    })
+    void findByStationsTest(Integer station, Integer expectedSize) {
+        // Given
+        // When
+        List<FireStation> fireStations = fireStationRepository.findByStation(station);
+        // Then
+        assertThat(fireStations.size()).isEqualTo(expectedSize);
+        assertThat(fireStations).allMatch(fireStation -> fireStation.getStation().equals(station));
     }
 
 }
