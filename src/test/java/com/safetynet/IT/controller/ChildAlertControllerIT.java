@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GetChildrenByAddressIT {
+public class ChildAlertControllerIT {
 
     @Autowired
     MockMvc mockMvc;

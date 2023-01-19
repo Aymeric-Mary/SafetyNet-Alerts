@@ -1,4 +1,4 @@
-package com.safetynet.dto;
+package com.safetynet.dto.fireStation;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,9 +7,9 @@ import java.util.List;
 
 @Builder
 @Getter
-public class GetPeopleByStationResponseDto {
+public class FireStationResponseDto {
 
-    private List<GetPersonByStationResponseDto> people;
+    private List<PersonResponseDto> people;
 
     private Integer nbAdults;
 

@@ -1,6 +1,6 @@
-package com.safetynet.dto;
+package com.safetynet.dto.fireStation;
 
-public record GetPersonByStationResponseDto(
+public record PersonResponseDto(
         String firstName,
         String lastName,
         String address,

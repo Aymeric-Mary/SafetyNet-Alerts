@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 @ControllerAdvice
@@ -20,12 +22,15 @@ public class AppExceptionHandler {
 
     @ExceptionHandler(NoSuchFireStationException.class)
     public ResponseEntity<Map<String, Object>> handleNoSuchFireStationException(NoSuchFireStationException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                Map.of(
-                        ERROR, "NO_SUCH_FIRESTATION",
-                        "station", e.getStation()
-                )
-        );
+        HashMap<String, Object> body = new HashMap<>();
+        body.put(ERROR, "NO_SUCH_FIRESTATION");
+        if (!Objects.isNull(e.getStation())) {
+            body.put("station", e.getStation());
+        }
+        if (!Objects.isNull(e.getAddress())) {
+            body.put("address", e.getAddress());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
     }
 
     @ExceptionHandler(NoSuchAddressException.class)

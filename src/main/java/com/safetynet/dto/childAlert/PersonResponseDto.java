@@ -1,4 +1,4 @@
-package com.safetynet.dto.getChildrenByAddress;
+package com.safetynet.dto.childAlert;
 
 public record PersonResponseDto(
         String firstName,

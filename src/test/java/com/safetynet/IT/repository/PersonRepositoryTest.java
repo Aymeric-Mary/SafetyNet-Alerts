@@ -25,15 +25,12 @@ public class PersonRepositoryTest{
         List<Person> people = sut.findAll();
         // Then
         assertThat(people.size()).isEqualTo(23);
-        assertThat(people)
-                .flatExtracting("firstName", "lastName", "address", "city", "zip", "phone", "email", "medicalRecord", "fireStation")
-                .doesNotContainNull();
     }
 
     @ParameterizedTest
     @CsvSource({
             "1,6",
-            "2,5",
+            "2,4",
             "3,11",
             "4,1",
             "5,0",

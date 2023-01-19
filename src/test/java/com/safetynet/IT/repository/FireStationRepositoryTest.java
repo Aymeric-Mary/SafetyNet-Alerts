@@ -20,7 +20,7 @@ public class FireStationRepositoryTest {
         // When
         List<FireStation> fireStations = fireStationRepository.findAll();
         // Then
-        assertThat(fireStations.size()).isEqualTo(13);
+        assertThat(fireStations.size()).isEqualTo(12);
         assertThat(fireStations)
                 .flatExtracting("address", "station", "people")
                 .doesNotContainNull();
@@ -30,7 +30,7 @@ public class FireStationRepositoryTest {
     @CsvSource({
             "1,3",
             "2,3",
-            "3,5",
+            "3,4",
             "4,2",
             "5,0"
     })

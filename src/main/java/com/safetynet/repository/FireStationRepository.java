@@ -4,6 +4,7 @@ import com.safetynet.model.FireStation;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class FireStationRepository extends AbstractRepository {
@@ -23,6 +24,13 @@ public class FireStationRepository extends AbstractRepository {
                 .stream()
                 .filter(fireStation -> fireStation.getStation().equals(station))
                 .toList();
+    }
+
+    public Optional<FireStation> findByAdress(String address){
+        return fireStations
+                .stream()
+                .filter(fireStation -> address.equals(fireStation.getAddress()))
+                .findFirst();
     }
 
 }

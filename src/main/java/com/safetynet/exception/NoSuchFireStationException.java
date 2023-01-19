@@ -1,12 +1,20 @@
 package com.safetynet.exception;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public class NoSuchFireStationException extends RuntimeException {
 
-    private final Integer station;
+    private Integer station;
+
+    private String address;
+
+    public NoSuchFireStationException(Integer station) {
+        this.station = station;
+    }
+
+    public NoSuchFireStationException(String address) {
+        this.address = address;
+    }
 
 }

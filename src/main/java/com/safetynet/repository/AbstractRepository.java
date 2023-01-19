@@ -42,7 +42,7 @@ public abstract class AbstractRepository {
     private void mapMedicalRecordToPerson(Person person) {
         this.data.getMedicalrecords()
                 .stream()
-                .filter(medicalRecord -> medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName()))
+                .filter(medicalRecord -> person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName()))
                 .findFirst()
                 .ifPresent(person::setMedicalRecord);
     }
@@ -50,7 +50,7 @@ public abstract class AbstractRepository {
     private void mapFireStationToPerson(Person person) {
         this.data.getFirestations()
                 .stream()
-                .filter(fireStation -> fireStation.getAddress().equals(person.getAddress()))
+                .filter(fireStation -> person.getAddress().equals(fireStation.getAddress()))
                 .findFirst()
                 .ifPresent(person::setFireStation);
     }
@@ -58,7 +58,7 @@ public abstract class AbstractRepository {
     private void mapPersonToMedicalRecord(MedicalRecord medicalRecord) {
         this.data.getPeople()
                 .stream()
-                .filter(person -> person.getMedicalRecord().equals(medicalRecord))
+                .filter(person -> medicalRecord.equals(person.getMedicalRecord()))
                 .findFirst()
                 .ifPresent(medicalRecord::setPerson);
     }
@@ -66,7 +66,7 @@ public abstract class AbstractRepository {
     private void mapPersonToFireStation(FireStation fireStation) {
         List<Person> people = this.data.getPeople()
                 .stream()
-                .filter(person -> person.getFireStation().equals(fireStation))
+                .filter(person -> fireStation.equals(person.getFireStation()))
                 .toList();
         fireStation.setPeople(people);
     }

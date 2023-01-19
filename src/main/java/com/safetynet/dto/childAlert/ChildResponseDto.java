@@ -1,4 +1,4 @@
-package com.safetynet.dto.getChildrenByAddress;
+package com.safetynet.dto.childAlert;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class ChildrenResponseDto {
+public class ChildResponseDto {
     private String firstName;
     private String lastName;
     private Integer age;
