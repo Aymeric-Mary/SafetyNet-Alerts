@@ -7,7 +7,6 @@ import lombok.Data;
 import java.util.List;
 
 @AllArgsConstructor
-@Builder
 @Data
 public class PersonResponseDto {
 
