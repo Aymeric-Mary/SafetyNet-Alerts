@@ -29,8 +29,13 @@ public class PersonRepository extends AbstractRepository {
 
     public List<Person> findByAddress(String address) {
         return people.stream()
-                .filter(person -> person.getAddress().equals(address))
+                .filter(person -> address.equals(person.getAddress()))
                 .toList();
     }
 
+    public List<Person> findByCity(String city) {
+        return people.stream()
+                .filter(person ->  city.equals(person.getCity()))
+                .toList();
+    }
 }
