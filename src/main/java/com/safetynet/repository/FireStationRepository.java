@@ -33,4 +33,10 @@ public class FireStationRepository extends AbstractRepository {
                 .findFirst();
     }
 
+    public List<FireStation> findByStations(List<Integer> stations) {
+        return fireStations
+                .stream()
+                .filter(fireStation -> stations.contains(fireStation.getStation()))
+                .toList();
+    }
 }

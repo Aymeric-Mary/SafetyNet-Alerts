@@ -19,6 +19,7 @@ public class ChildAlertMapperTest {
 
     @Test
     void toPersonResponseDtoTest() {
+
         // Given
         Person person = mock(Person.class);
         when(person.getFirstName()).thenReturn("John");
