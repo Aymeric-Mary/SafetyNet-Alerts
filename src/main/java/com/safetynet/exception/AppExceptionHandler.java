@@ -43,4 +43,14 @@ public class AppExceptionHandler {
         );
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(IllegalArgumentException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                Map.of(
+                        ERROR, "ILLEGAL_ARGUMENT",
+                        "message", e.getMessage()
+                )
+        );
+    }
+
 }

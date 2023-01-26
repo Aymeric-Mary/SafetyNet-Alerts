@@ -35,7 +35,25 @@ public class PersonRepository extends AbstractRepository {
 
     public List<Person> findByCity(String city) {
         return people.stream()
-                .filter(person ->  city.equals(person.getCity()))
+                .filter(person -> city.equals(person.getCity()))
+                .toList();
+    }
+
+    public List<Person> findByFirstNameAndLastName(String firstName, String lastName) {
+        return people.stream()
+                .filter(person -> firstName.equals(person.getFirstName()) && lastName.equals(person.getLastName()))
+                .toList();
+    }
+
+    public List<Person> findByLastName(String lastName) {
+        return people.stream()
+                .filter(person -> lastName.equals(person.getLastName()))
+                .toList();
+    }
+
+    public List<Person> findByFirstName(String firstName) {
+        return people.stream()
+                .filter(person -> firstName.equals(person.getFirstName()))
                 .toList();
     }
 }
