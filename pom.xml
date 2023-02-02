@@ -133,7 +133,6 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
-                        <param>com.safetynet.service.MedicalRecordService</param>
                     </targetClasses>
                     <targetTests>
                     </targetTests>

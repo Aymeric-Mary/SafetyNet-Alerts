@@ -1,6 +1,7 @@
 package com.safetynet.repository;
 
 import com.safetynet.model.FireStation;
+import com.safetynet.model.MedicalRecord;
 import com.safetynet.model.Person;
 import org.springframework.stereotype.Component;
 
@@ -56,5 +57,24 @@ public class PersonRepository extends AbstractRepository {
         return people.stream()
                 .filter(person -> firstName.equals(person.getFirstName()))
                 .toList();
+    }
+
+    public Person save(Person person) {
+        Optional<Person> existingPerson = findByFirstNameAndLastName(person.getFirstName(), person.getLastName());
+        if (existingPerson.isPresent()) {
+            existingPerson.get().setAddress(person.getAddress());
+            existingPerson.get().setCity(person.getCity());
+            existingPerson.get().setZip(person.getZip());
+            existingPerson.get().setPhone(person.getPhone());
+            existingPerson.get().setEmail(person.getEmail());
+            return existingPerson.get();
+        }
+        people.add(person);
+        return person;
+    }
+
+    public void delete(Person person) {
+        Optional<Person> existingPerson = findByFirstNameAndLastName(person.getFirstName(), person.getLastName());
+        existingPerson.ifPresent(people::remove);
     }
 }

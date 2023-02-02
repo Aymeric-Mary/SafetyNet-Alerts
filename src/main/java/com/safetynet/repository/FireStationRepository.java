@@ -11,7 +11,7 @@ public class FireStationRepository extends AbstractRepository {
 
     private List<FireStation> fireStations;
 
-    public FireStationRepository(){
+    public FireStationRepository() {
         this.fireStations = data.getFirestations();
     }
 
@@ -19,14 +19,14 @@ public class FireStationRepository extends AbstractRepository {
         return fireStations;
     }
 
-    public List<FireStation> findByStation(Integer station){
+    public List<FireStation> findByStation(Integer station) {
         return fireStations
                 .stream()
                 .filter(fireStation -> fireStation.getStation().equals(station))
                 .toList();
     }
 
-    public Optional<FireStation> findByAdress(String address){
+    public Optional<FireStation> findByAddress(String address) {
         return fireStations
                 .stream()
                 .filter(fireStation -> address.equals(fireStation.getAddress()))
@@ -38,5 +38,19 @@ public class FireStationRepository extends AbstractRepository {
                 .stream()
                 .filter(fireStation -> stations.contains(fireStation.getStation()))
                 .toList();
+    }
+
+    public FireStation save(FireStation fireStation) {
+        Optional<FireStation> existingFireStation = findByAddress(fireStation.getAddress());
+        if (existingFireStation.isPresent()) {
+            existingFireStation.get().setAddress(fireStation.getAddress());
+            return existingFireStation.get();
+        }
+        fireStations.add(fireStation);
+        return fireStation;
+    }
+
+    public void delete(FireStation fireStation) {
+        fireStations.remove(fireStation);
     }
 }

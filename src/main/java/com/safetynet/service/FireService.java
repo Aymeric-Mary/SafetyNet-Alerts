@@ -27,7 +27,7 @@ public class FireService {
     public FireResponseDto getFireResponseDto(String address) {
         List<Person> people = personRepository.findByAddress(address);
         if (people.isEmpty()) throw new NoSuchAddressException(address);
-        FireStation fireStation = fireStationRepository.findByAdress(address)
+        FireStation fireStation = fireStationRepository.findByAddress(address)
                 .orElseThrow(() -> new NoSuchFireStationException(address));
         List<PersonResponseDto> responseDtos = fireMapper.toPersonResponseDtos(people);
         return FireResponseDto.builder()

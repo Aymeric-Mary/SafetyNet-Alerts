@@ -75,6 +75,27 @@ public class AppExceptionHandler {
         );
     }
 
+    @ExceptionHandler(PersonAlreadyExistException.class)
+    public ResponseEntity<Map<String, Object>> handlePersonAlreadyExistException(PersonAlreadyExistException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(
+                Map.of(
+                        ERROR, "PERSON_ALREADY_EXIST",
+                        "firstName", e.getFirstName(),
+                        "lastName", e.getLastName()
+                )
+        );
+    }
+
+    @ExceptionHandler(FireStationAlreadyExistException.class)
+    public ResponseEntity<Map<String, Object>> handleFireStationAlreadyExistException(FireStationAlreadyExistException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(
+                Map.of(
+                        ERROR, "FIRESTATION_ALREADY_EXIST",
+                        "address", e.getAddress()
+                )
+        );
+    }
+
     @ExceptionHandler(NoSuchPersonException.class)
     public ResponseEntity<Map<String, Object>> handleNoSuchPersonException(NoSuchPersonException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(

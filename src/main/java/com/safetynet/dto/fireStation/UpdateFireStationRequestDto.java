@@ -1,6 +1,6 @@
 package com.safetynet.dto.fireStation;
 
-public record FireStationResponseDto(
+public record UpdateFireStationRequestDto(
         String address,
         Integer station
 ) {

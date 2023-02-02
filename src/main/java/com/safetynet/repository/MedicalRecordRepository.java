@@ -47,10 +47,6 @@ public class MedicalRecordRepository extends AbstractRepository {
                 medicalRecord.getFirstName(),
                 medicalRecord.getLastName()
         );
-        if (existingMedicalRecord.isPresent()) {
-            medicalRecords.remove(existingMedicalRecord.get());
-        } else {
-            throw new NoSuchMedicalRecordException(medicalRecord.getFirstName(), medicalRecord.getLastName());
-        }
+        existingMedicalRecord.ifPresent(medicalRecords::remove);
     }
 }
