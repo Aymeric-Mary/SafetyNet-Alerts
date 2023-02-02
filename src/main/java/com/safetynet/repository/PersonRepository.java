@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonRepository extends AbstractRepository {
@@ -39,10 +40,10 @@ public class PersonRepository extends AbstractRepository {
                 .toList();
     }
 
-    public List<Person> findByFirstNameAndLastName(String firstName, String lastName) {
+    public Optional<Person> findByFirstNameAndLastName(String firstName, String lastName) {
         return people.stream()
                 .filter(person -> firstName.equals(person.getFirstName()) && lastName.equals(person.getLastName()))
-                .toList();
+                .findFirst();
     }
 
     public List<Person> findByLastName(String lastName) {

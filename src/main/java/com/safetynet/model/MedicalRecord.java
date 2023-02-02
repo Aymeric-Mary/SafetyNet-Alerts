@@ -1,6 +1,7 @@
 package com.safetynet.model;
 
 import lombok.*;
+import lombok.Data;
 
 import java.util.List;
 

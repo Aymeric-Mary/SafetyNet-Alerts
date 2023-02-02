@@ -1,8 +1,7 @@
-package com.safetynet.UT.services;
+package com.safetynet.UT.service;
 
 import com.safetynet.dto.personInfo.PersonInfoResponseDto;
 import com.safetynet.dto.personInfo.PersonResponseDto;
-import com.safetynet.model.MedicalRecord;
 import com.safetynet.model.Person;
 import com.safetynet.repository.PersonRepository;
 import com.safetynet.mapper.PersonInfoMapper;
@@ -14,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,22 +40,26 @@ public class PersonInfoServiceTest {
     @Test
     void testGetPersonInfoResponseDto_withFirstNameAndLastName() {
         // Given
-        List<Person> people = List.of(
-                Person.builder().firstName("John").lastName("Boyd").build()
+        Optional<Person> person = Optional.of(Person.builder()
+                .firstName("John")
+                .lastName("Boyd")
+                .build()
         );
         PersonInfoResponseDto expected = new PersonInfoResponseDto(
                 List.of(
                         PersonResponseDto.builder().firstName("John").lastName("Boyd").build()
                 )
         );
-        when(personRepository.findByFirstNameAndLastName("John", "Boyd")).thenReturn(people);
-        when(personInfoMapper.toPersonResponseDtoList(people)).thenReturn(expected.getPeople());
+        when(personRepository.findByFirstNameAndLastName("John", "Boyd")).thenReturn(person);
+        when(personInfoMapper.toPersonResponseDtoList(List.of(person.get()))).thenReturn(expected.getPeople());
         // When
         PersonInfoResponseDto result = sut.getPersonInfoResponseDto("John", "Boyd");
         // Then
         verify(personRepository).findByFirstNameAndLastName("John", "Boyd");
-        verify(personInfoMapper).toPersonResponseDtoList(people);
-        assertThat(result).isEqualTo(expected);
+        verify(personInfoMapper).toPersonResponseDtoList(List.of(person.get()));
+        assertThat(result)
+                .usingRecursiveComparison()
+                .isEqualTo(expected);
     }
 
     @Test
@@ -78,7 +82,9 @@ public class PersonInfoServiceTest {
         // Then
         verify(personRepository).findByLastName("Boyd");
         verify(personInfoMapper).toPersonResponseDtoList(people);
-        assertThat(result).isEqualTo(expected);
+        assertThat(result)
+                .usingRecursiveComparison()
+                .isEqualTo(expected);
     }
 
     @Test
@@ -101,7 +107,7 @@ public class PersonInfoServiceTest {
         // Then
         verify(personRepository).findByFirstName("John");
         verify(personInfoMapper).toPersonResponseDtoList(people);
-        assertThat(result).isEqualTo(expected);
+        assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
 }

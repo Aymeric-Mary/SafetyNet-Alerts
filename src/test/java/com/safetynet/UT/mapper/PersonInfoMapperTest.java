@@ -65,7 +65,9 @@ public class PersonInfoMapperTest {
                         .allergies(List.of())
                         .build()
         );
-        assertThat(responseDtos).isEqualTo(expectedResponseDtos);
+        assertThat(responseDtos)
+                .usingRecursiveFieldByFieldElementComparator()
+                .isEqualTo(expectedResponseDtos);
     }
 
 }

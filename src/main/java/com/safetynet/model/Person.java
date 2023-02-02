@@ -2,6 +2,7 @@ package com.safetynet.model;
 
 import com.safetynet.utils.Utils;
 import lombok.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.Period;

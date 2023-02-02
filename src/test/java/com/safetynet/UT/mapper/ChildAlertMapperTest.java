@@ -70,7 +70,9 @@ public class ChildAlertMapperTest {
                         )
                 )
         );
-        assertThat(responseDto).isEqualTo(expectedResponseDto);
+        assertThat(responseDto)
+                .usingRecursiveComparison()
+                .isEqualTo(expectedResponseDto);
     }
 
     @Test
@@ -84,7 +86,9 @@ public class ChildAlertMapperTest {
         ChildResponseDto responseDto = sut.toChildrenResponseDto(person);
         // Then
         var expectedResponseDto = new ChildResponseDto("Tenley", "Boyd", 10, null);
-        assertThat(responseDto).isEqualTo(expectedResponseDto);
+        assertThat(responseDto)
+                .usingRecursiveComparison()
+                .isEqualTo(expectedResponseDto);
     }
 
 }

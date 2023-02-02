@@ -21,7 +21,7 @@ public class PersonTest {
             "01/07/2013,10",
             "01/08/2013,9"
     })
-    void getAge_withLimitDate(String birthDate, Integer expectedAge) {
+    public void getAge_withLimitDate(String birthDate, Integer expectedAge) {
         // Given
         MedicalRecord medicalRecord = MedicalRecord.builder()
                 .birthdate(birthDate)

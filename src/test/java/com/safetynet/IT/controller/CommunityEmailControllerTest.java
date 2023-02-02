@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CommunityEmailControllerIT {
+public class CommunityEmailControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -48,7 +48,8 @@ public class CommunityEmailControllerIT {
                       "bstel@email.com",
                       "ssanw@email.com",
                       "clivfd@ymail.com",
-                      "gramps@email.com"
+                      "gramps@email.com",
+                      "emsmith@email.com"
                     ]
                   }
                 """;

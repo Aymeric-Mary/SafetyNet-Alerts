@@ -70,5 +70,4 @@ public abstract class AbstractRepository {
                 .toList();
         fireStation.setPeople(people);
     }
-
 }

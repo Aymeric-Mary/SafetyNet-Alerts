@@ -1,20 +1,18 @@
-package com.safetynet.dto.floodStations;
+package com.safetynet.dto.medicalRecord;
 
 import lombok.*;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Data
-public class PersonResponseDto {
-
+@Builder
+@AllArgsConstructor
+public class MedicalRecordResponseDto {
     private String firstName;
 
     private String lastName;
 
-    private String phone;
-
-    private Integer age;
+    private String birthdate;
 
     private List<String> medications;
 

@@ -43,12 +43,45 @@ public class AppExceptionHandler {
         );
     }
 
+    @ExceptionHandler(NoSuchMedicalRecordException.class)
+    public ResponseEntity<Map<String, Object>> handleNoSuchMedicalRecordException(NoSuchMedicalRecordException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                Map.of(
+                        ERROR, "NO_SUCH_MEDICAL_RECORD",
+                        "firstName", e.getFirstName(),
+                        "lastName", e.getLastName()
+                )
+        );
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(IllegalArgumentException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                 Map.of(
                         ERROR, "ILLEGAL_ARGUMENT",
                         "message", e.getMessage()
+                )
+        );
+    }
+
+    @ExceptionHandler(MedicalRecordAlreadyExistException.class)
+    public ResponseEntity<Map<String, Object>> handleMedicalRecordAlreadyExistException(MedicalRecordAlreadyExistException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(
+                Map.of(
+                        ERROR, "MEDICAL_RECORD_ALREADY_EXIST",
+                        "firstName", e.getFirstName(),
+                        "lastName", e.getLastName()
+                )
+        );
+    }
+
+    @ExceptionHandler(NoSuchPersonException.class)
+    public ResponseEntity<Map<String, Object>> handleNoSuchPersonException(NoSuchPersonException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                Map.of(
+                        ERROR, "NO_SUCH_PERSON",
+                        "firstName", e.getFirstName(),
+                        "lastName", e.getLastName()
                 )
         );
     }

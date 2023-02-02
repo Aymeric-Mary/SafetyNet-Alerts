@@ -1,8 +1,6 @@
 package com.safetynet.dto.personInfo;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 

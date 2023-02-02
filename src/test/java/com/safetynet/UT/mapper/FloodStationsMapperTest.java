@@ -42,7 +42,9 @@ public class FloodStationsMapperTest {
                 List.of("aznol:350mg", "hydrapermazol:100mg"),
                 List.of("nillacilan")
         );
-        assertThat(responseDto).isEqualTo(expectedResponseDto);
+        assertThat(responseDto)
+                .usingRecursiveComparison()
+                .isEqualTo(expectedResponseDto);
     }
 
 }

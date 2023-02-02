@@ -24,7 +24,7 @@ public class PersonRepositoryTest{
         // When
         List<Person> people = sut.findAll();
         // Then
-        assertThat(people.size()).isEqualTo(23);
+        assertThat(people.size()).isEqualTo(24);
     }
 
     @ParameterizedTest

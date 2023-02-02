@@ -46,7 +46,9 @@ public class FireMapperTest {
                 new PersonResponseDto("Jacob", "Boyd", "841-874-6513", 15, List.of("pharmacol:5000mg", "terazine:10mg", "noznazol:250mg"), List.of())
         );
 
-        assertThat(personResponseDtos).isEqualTo(expectedResponseDto);
+        assertThat(personResponseDtos)
+                .usingRecursiveFieldByFieldElementComparator()
+                .isEqualTo(expectedResponseDto);
     }
 
 }
