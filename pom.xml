@@ -133,8 +133,10 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
+                        <param>com.safetynet.repository*</param>
                     </targetClasses>
                     <targetTests>
+                        <param>com.safetynet.UT.repository*</param>
                     </targetTests>
                 </configuration>
             </plugin>

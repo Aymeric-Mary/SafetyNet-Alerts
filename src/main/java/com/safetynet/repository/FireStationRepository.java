@@ -43,7 +43,7 @@ public class FireStationRepository extends AbstractRepository {
     public FireStation save(FireStation fireStation) {
         Optional<FireStation> existingFireStation = findByAddress(fireStation.getAddress());
         if (existingFireStation.isPresent()) {
-            existingFireStation.get().setAddress(fireStation.getAddress());
+            existingFireStation.get().setStation(fireStation.getStation());
             return existingFireStation.get();
         }
         fireStations.add(fireStation);
