@@ -28,7 +28,6 @@ public abstract class AbstractRepository {
             this.data.getPeople().forEach(this::mapPersonRelation);
             this.data.getMedicalrecords().forEach(this::mapPersonToMedicalRecord);
             this.data.getFirestations().forEach(this::mapPersonToFireStation);
-            System.out.println(this.data);
         } catch (IOException e) {
             e.printStackTrace();
         }
