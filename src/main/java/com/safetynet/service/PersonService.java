@@ -1,20 +1,12 @@
 package com.safetynet.service;
 
-import com.safetynet.dto.medicalRecord.CreateMedicalRecordRequestDto;
-import com.safetynet.dto.medicalRecord.DeleteMedicalRecordRequestDto;
-import com.safetynet.dto.medicalRecord.UpdateMedicalRecordRequestDto;
 import com.safetynet.dto.person.CreatePersonRequestDto;
 import com.safetynet.dto.person.DeletePersonRequestDto;
 import com.safetynet.dto.person.UpdatePersonRequestDto;
-import com.safetynet.exception.MedicalRecordAlreadyExistException;
-import com.safetynet.exception.NoSuchMedicalRecordException;
 import com.safetynet.exception.NoSuchPersonException;
 import com.safetynet.exception.PersonAlreadyExistException;
-import com.safetynet.mapper.MedicalRecordMapper;
 import com.safetynet.mapper.PersonMapper;
-import com.safetynet.model.MedicalRecord;
 import com.safetynet.model.Person;
-import com.safetynet.repository.MedicalRecordRepository;
 import com.safetynet.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

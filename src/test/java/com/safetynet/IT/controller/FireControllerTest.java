@@ -1,6 +1,9 @@
 package com.safetynet.IT.controller;
 
+import com.safetynet.utils.Utils;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
+
+import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -27,6 +32,8 @@ public class FireControllerTest {
     @Test
     void getPeopleByAddress() throws Exception {
         // Given
+        try (MockedStatic<Utils> utilities = Mockito.mockStatic(Utils.class)) {
+            utilities.when(Utils::getCurrentDate).thenReturn(LocalDate.parse("2023-01-07"));
         // When
         MvcResult result = mockMvc.perform(getRequestBuilder("908 73rd St"))
                 .andExpect(status().isOk())
@@ -60,6 +67,7 @@ public class FireControllerTest {
                   }
                 """;
         JSONAssert.assertEquals(jsonExpected, result.getResponse().getContentAsString(), true);
+        }
     }
 
     @Test
